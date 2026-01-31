@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Competition Toolkit
 
 This repository contains a consolidated set of tools, scripts, documentation, and templates
@@ -68,4 +67,5 @@ Teams are responsible for understanding the impact of any tool or configuration
 on scoring, availability, and competition rules.
 =======
 # MSU Cyber Team Resources
+
 >>>>>>> d2b20ad (Initial import)
