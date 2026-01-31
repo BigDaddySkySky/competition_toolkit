@@ -1,0 +1,123 @@
+-w /etc/audit/ -p wa -k auditconfig
+-w /etc/libaudit.conf -p wa -k auditconfig
+-w /etc/audisp/ -p wa -k audispconfig
+
+-a always,exclude -F msgtype=AVC
+-a always,exclude -F msgtype=CWD
+-a never,exit -F arch=b64 -S adjtimex -F auid=-1 -F uid=chrony -F subj_type=chronyd_t
+-a always,exclude -F msgtype=CRYPTO_KEY_USER
+-a never,exit -F arch=b64 -F dir=/dev/shm -k sharedmemaccess
+-a never,exit -F arch=b64 -F dir=/var/lock/lvm -k locklvm
+
+-w /etc/sysctl.conf -p wa -k sysctl
+-w /etc/sysctl.d -p wa -k sysctl
+
+-w /etc/inittab -p wa -k init
+-w /etc/init.d/ -p wa -k init
+-w /etc/init/ -p wa -k init
+
+-w /etc/sudoers -p wa -k sudoers
+-w /etc/sudoers.d/ -p wa -k sudoers
+
+-w /bin/su -p x -k priv_esc
+-w /usr/bin/sudo -p x -k priv_esc
+
+-w /etc/passwd -p wa -k users
+-w /etc/security/opasswd -k users
+-w /etc/shadow -p wa -k users
+-w /etc/group -p wa -k groups
+-w /etc/gshadow -p wa -k groups
+
+-w /usr/bin/passwd -p x -k password
+
+-w /usr/sbin/groupadd -p x -k group_mod
+-w /usr/sbin/groupmod -p x -k group_mod
+-w /usr/sbin/addgroup -p x -k group_mod
+-w /usr/sbin/useradd -p x -k user_mod
+-w /usr/sbin/userdel -p x -k user_mod
+-w /usr/sbin/usermod -p x -k user_mod
+-w /usr/sbin/adduser -p x -k user_mod
+
+-w /etc/ssh/sshd_config -k ssh
+-w /etc/ssh/sshd_config.d -k ssh
+-w /root/.ssh -p wa -k ssh
+-w /etc/ssh/authorized_keys -p wa -k ssh
+-w /home/*/.ssh/authorized_keys -p wa -k ssh
+
+-w /etc/cron.allow -p wa -k cron
+-w /etc/cron.deny -p wa -k cron
+-w /etc/cron.d/ -p wa -k cron
+-w /etc/cron.daily/ -p wa -k cron
+-w /etc/cron.hourly/ -p wa -k cron
+-w /etc/cron.weekly/ -p wa -k cron
+-w /etc/cron.monthly/ -p wa -k cron
+-w /etc/crontab -p wa -k cron
+-w /var/spool/cron/ -p wa -k cron
+
+-w /bin/systemctl -p x -k systemd
+-w /etc/systemd/ -p wa -k systemd
+-w /usr/lib/systemd -p wa -k systemd
+
+-w /etc/pam.d/ -p wa -k pam
+-w /etc/security/limits.conf -p wa  -k pam
+-w /etc/security/limits.d -p wa  -k pam
+-w /etc/security/pam_env.conf -p wa -k pam
+-w /etc/security/namespace.conf -p wa -k pam
+-w /etc/security/namespace.d -p wa -k pam
+-w /etc/security/namespace.init -p wa -k pam
+
+-w /etc/login.defs -p wa -k login
+-w /etc/securetty -p wa -k login
+-w /var/log/faillog -p wa -k login
+-w /var/log/lastlog -p wa -k login
+-w /var/log/tallylog -p wa -k login
+
+-a always,exit -F arch=b64 -F exe=/bin/bash -F success=1 -S connect -k "remote_shell"
+-a always,exit -F arch=b64 -F exe=/usr/bin/bash -F success=1 -S connect -k "remote_shell"
+-a always,exit -F arch=b64 -S connect -F a2=16 -F success=1 -F key=network_connect_4
+
+-w /bin/ash -p x -k susp_shell
+-w /bin/busybox -p x -k susp_shell
+-w /bin/dash -p x -k susp_shell
+-w /bin/csh -p x -k susp_shell
+-w /bin/fish -p x -k susp_shell
+-w /bin/ksh -p x -k susp_shell
+-w /bin/tcsh -p x -k susp_shell
+-w /bin/tclsh -p x -k susp_shell
+-w /bin/xonsh -p x -k susp_shell
+-w /usr/local/bin/xonsh -p x -k susp_shell
+-w /bin/open -p x -k susp_shell
+-w /bin/rbash -p x -k susp_shell
+-w /bin/zsh -p x -k susp_shell
+-w /bin/wish -p x -k susp_shell
+-w /usr/bin/wish -p x -k susp_shell
+-w /bin/yash -p x -k susp_shell
+-w /usr/bin/yash -p x -k susp_shell
+-w /bin/clush -p x -k susp_shell
+-w /usr/local/bin/clush -p x -k susp_shell
+-w /etc/clustershell/clush.conf -p x -k susp_shell
+
+-w /usr/bin/wget -p x -k susp_activity
+-w /usr/bin/curl -p x -k susp_activity
+-w /usr/bin/pkexec -p x -k susp_activity
+-w /usr/bin/base64 -p x -k susp_activity
+-w /bin/nc -p x -k susp_activity
+-w /bin/netcat -p x -k susp_activity
+-w /usr/bin/ncat -p x -k susp_activity
+-w /usr/bin/scp -p x -k susp_activity
+-w /usr/bin/sftp -p x -k susp_activity
+-w /usr/bin/ftp -p x -k susp_activity
+-w /usr/bin/socat -p x -k susp_activity
+-w /usr/bin/wireshark -p x -k susp_activity
+-w /usr/bin/tshark -p x -k susp_activity
+-w /usr/bin/rawshark -p x -k susp_activity
+-w /usr/bin/rdesktop -p x -k susp_activity
+-w /usr/local/bin/rdesktop -p x -k susp_activity
+-w /usr/bin/wlfreerdp -p x -k susp_activity
+-w /usr/bin/xfreerdp -p x -k susp_activity
+-w /usr/local/bin/xfreerdp -p x -k susp_activity
+-w /usr/bin/nmap -p x -k susp_activity
+-w /bin/nc.openbsd -p x -k susp_activity
+-w /bin/nc.traditional -p x -k susp_activity
+
+

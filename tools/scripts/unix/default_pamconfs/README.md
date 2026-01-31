@@ -1,0 +1,5 @@
+- debian: just straight up /etc/pam.d
+- centos: just straight up /etc/pam.d
+- ubuntu: just straight up /etc/pam.d
+- opensuse: just straight up /etc/pam.d
+- fedora: need to copy authselect to /etc/authselect

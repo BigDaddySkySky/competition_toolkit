@@ -1,0 +1,4 @@
+- debian -> /etc/apt/
+- ubuntu -> /etc/apt/
+- centos -> /etc/yum.repos.d/
+- fedora -> /etc/yum.repos.d/

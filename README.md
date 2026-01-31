@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Competition Toolkit
 
 This repository contains a consolidated set of tools, scripts, documentation, and templates
@@ -65,3 +66,6 @@ Content is limited to defensive tooling, documentation, and operational referenc
 This toolkit is provided as-is for educational and competition use.
 Teams are responsible for understanding the impact of any tool or configuration
 on scoring, availability, and competition rules.
+=======
+# MSU Cyber Team Resources
+>>>>>>> d2b20ad (Initial import)
