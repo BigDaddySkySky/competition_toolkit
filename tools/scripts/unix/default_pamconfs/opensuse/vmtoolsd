@@ -1,5 +1,0 @@
-auth     required       pam_shells.so
-auth     requisite      pam_nologin.so
-auth     include        common-auth
-account  include        common-account
-
